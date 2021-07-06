@@ -14,21 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/fragestellen');
 });
 
-Auth::routes();
+Route::group(['prefix' => '016096372673'], function() {
+    Route::auth();
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function (){
+    return redirect('/fragen');
+})->name('home');
 Route::get('/fragestellen', 'FragenstellenController@index');
 Route::post('/fragestellen', 'FragenstellenController@fragestellen')->name('frage.stellen');
 
 Route::get('/fragen', function (){
     return view('crud');
-})->middleware('auth');
+})->middleware('auth')->name('fragen');
 
 Route::get('/bauchbinde', function (){
     return view('bauchbinde');
 });
 
-Route::get('/test', 'YouTubeController@getComments');

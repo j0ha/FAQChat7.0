@@ -56,6 +56,7 @@
 
                         </div>
                     </div>
+                        <a class="text-muted" href="http://johannesschur.com/impressum">Impressum</a>
                 </div>
             </div>
         </div>
