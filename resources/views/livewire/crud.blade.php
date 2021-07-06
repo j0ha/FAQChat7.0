@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="form-group" row>
-        <p class="text-muted">Zuletzt aktualisiert: @php echo(date('h:i:s d.m.Y')); @endphp - aktualisiert alle 10 Sekunden</p>
+        <p class="text-muted">Zuletzt aktualisiert: @php echo(date('H:i:s d.m.Y')); @endphp - aktualisiert alle 10 Sekunden</p>
     </div>
     <table class="table table-striped" wire:poll.10000ms>
         <thead>

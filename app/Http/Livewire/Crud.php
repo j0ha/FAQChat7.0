@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Frage;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Http\Controllers\YouTubeController;
 
 class Crud extends Component
 {
@@ -14,9 +15,16 @@ class Crud extends Component
     public $search = '';
     public $orderBy = 'id';
     public $orderAsc = false;
+    public $count = 0;
 
     public function render()
     {
+        if($this->count >= 3) {
+        $you = new YouTubeController();
+        $you->getComments();
+        $this->count = 0;
+    }
+        $this->count = $this->count + 1;
         return view('livewire.crud', [
             'fragen' => Frage::search($this->search)
                 ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')
