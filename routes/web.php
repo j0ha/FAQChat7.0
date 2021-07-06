@@ -30,3 +30,5 @@ Route::get('/fragen', function (){
 Route::get('/bauchbinde', function (){
     return view('bauchbinde');
 });
+
+Route::get('/test', 'YouTubeController@getComments');
