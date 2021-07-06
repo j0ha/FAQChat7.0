@@ -26,3 +26,7 @@ Route::post('/fragestellen', 'FragenstellenController@fragestellen')->name('frag
 Route::get('/fragen', function (){
     return view('crud');
 })->middleware('auth');
+
+Route::get('/bauchbinde', function (){
+    return view('bauchbinde');
+});
