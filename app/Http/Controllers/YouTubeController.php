@@ -38,7 +38,5 @@ class YouTubeController extends Controller
                 $comment->autor = $authorDetails['displayName'];
                 $comment->save();
             }
-            return 'done';
-
     }
 }
