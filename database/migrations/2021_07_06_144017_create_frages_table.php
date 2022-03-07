@@ -18,7 +18,7 @@ class CreateFragesTable extends Migration
             $table->text("frage");
             $table->string('autor')->default('Anonym');
             $table->boolean('beantwortet')->default(false);
-            $table->boolean('live')->default(false);
+            $table->boolean('aktion')->default(false);
             $table->timestamps();
         });
     }
