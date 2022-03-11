@@ -17,7 +17,7 @@ Route::get('/', function () {
     return redirect('/fragestellen');
 });
 
-Route::group(['prefix' => '016096372673'], function() {
+Route::group(['prefix' => 'master'], function() {
     Route::auth();
 });
 
