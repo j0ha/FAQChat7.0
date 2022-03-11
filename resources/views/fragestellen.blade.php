@@ -24,6 +24,15 @@
                             {{ session()->get('success') }}
                         </div>
                     @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-header">{{config('faq.header')}}</div>
 
@@ -46,7 +55,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="frage" class="form-label">Frage</label>
-                                <textarea class="form-control" id="frage" name="frage" rows="3" required maxlength="375" placeholder="{{config('faq.paceholder_question')}}"></textarea>
+                                <textarea class="form-control" id="frage" name="frage" rows="3" required maxlength="450" placeholder="{{config('faq.paceholder_question')}}"></textarea>
                                 <label for="frage" class="text-muted text-small">Pflicht</label>
                             </div>
                                 <div class="mb-3 form-check">

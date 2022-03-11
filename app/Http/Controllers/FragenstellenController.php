@@ -11,6 +11,18 @@ class FragenstellenController extends Controller
         return view('fragestellen');
     }
     public function fragestellen(Request $request) {
+        if(config('faq.anonymous') == true) {
+            $request->validate([
+                'autor' => 'min:1 | max:255',
+                'frage' => 'required | max:450',
+            ]);
+        } else {
+            $request->validate([
+                'autor' => 'min:1 | max:255 | required',
+                'frage' => 'required | max:450',
+            ]);
+        }
+        
         $frage = new Frage();
         if ($request->autor == null){
             $frage->autor = 'Anonym';
