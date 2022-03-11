@@ -16,10 +16,11 @@ class Crud extends Component
     public $orderBy = 'id';
     public $orderAsc = false;
     public $count = 0;
+    public $youActive = false;
 
     public function render()
     {
-        if($this->count >= 3) {
+        if($this->count >= 3 and $this->youActive == true) {
         $you = new YouTubeController();
         $you->getComments();
         $this->count = 0;
@@ -54,5 +55,13 @@ class Crud extends Component
         $frage = Frage::find($id);
         $frage->aktiv = false;
         $frage->update();
+    }
+
+    public function toggleYou() {
+        if($this->youActive == true) {
+            $this->youActive = false;
+        } else {
+            $this->youActive = true;
+        }
     }
 }

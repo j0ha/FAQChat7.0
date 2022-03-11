@@ -8,7 +8,7 @@
     </div>
 
     <div class="form-group row">
-        <label for="orderAsc" class="col-4 col-form-label"></label>
+        <label for="orderAsc" class="col-4 col-form-label">Sortierung</label>
         <div class="col-8">
             <select wire:model="orderAsc" id="orderAsc" name="orderAsc" required="required" class="custom-select">
                 <option value="1">Aufsteigend</option>
@@ -56,4 +56,10 @@
     <div class="d-flex justify-content-center">
         {{$fragen->links()}}
     </div>
+    @if ($youActive == true)
+        <button wire:click.lazy="toggleYou()" type="button" class="btn btn-danger m-1">YouTube deaktivieren</button>
+    @else
+        <button wire:click.lazy="toggleYou()" type="button" class="btn btn-success m-1">YouTube aktivieren</button>
+    @endif
+    <p class="text-muted m-1">YouTube Chat-Nachrichten werden alle 30 Sekunden geladen.</p>
 </div>
