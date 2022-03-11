@@ -25,28 +25,34 @@
                         </div>
                     @endif
                     <div class="card">
-                        <div class="card-header">Projekt Langenstücken - Live F&Q</div>
+                        <div class="card-header">{{config('faq.header')}}</div>
 
                         <div class="card-body">
-                            <p>Hier können Sie Fragen zu dem Projekt Langenstücken der katholischen Pfarrei Seliger Johannes Prassek formulieren, welche anschließend im Livestream von den Beteiligten beantwortet werden.</p>
-                            <p class="text-muted">Bitte stellen Sie nur eine Frage gleichzeitig. Wenn Sie mehrere Fragen stellen wollen, schicken Sie bitte zunächst die erste Frage ab und füllen das Formular erneut aus.</p>
+                            <p>{{config('faq.description1')}}</p>
+                            <p class="text-muted">{{config('faq.description2')}}</p>
                             <hr>
                             <form class="form-floating" method="post" action="{{route('frage.stellen')}}">
                                 @csrf
                                 <div class="mb-3">
                                 <label for="autor" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="autor" name="autor" placeholder="Daniel Schmidt">
+                                <input type="text" class="form-control" id="autor" name="autor" @if (config('faq.anonymous') == false)
+                                    required
+                                @endif placeholder="{{config('faq.paceholder_name')}}">
+                                @if (config('faq.anonymous') == true)
                                     <label for="autor" class="text-muted text-small">Optional</label>
+                                @else
+                                    <label for="autor" class="text-muted text-small">Pflicht</label>
+                                @endif     
                             </div>
                             <div class="mb-3">
                                 <label for="frage" class="form-label">Frage</label>
-                                <textarea class="form-control" id="frage" name="frage" rows="3" required maxlength="375" placeholder="Ich möchte gerne wissen..."></textarea>
+                                <textarea class="form-control" id="frage" name="frage" rows="3" required maxlength="375" placeholder="{{config('faq.paceholder_question')}}"></textarea>
                                 <label for="frage" class="text-muted text-small">Pflicht</label>
                             </div>
                                 <div class="mb-3 form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
                                     <label class="form-check-label" for="flexCheckDefault">
-                                        Ich bin damit einverstanden, dass diese Frage und falls angegeben der Name gespeichert und im Livestream veröffentlicht wird.
+                                        {{config('faq.consent')}}
                                     </label>
                                 </div>
                             <div class="mb-3">
@@ -56,7 +62,7 @@
 
                         </div>
                     </div>
-                        <a class="text-muted" href="http://johannesschur.com/impressum">Impressum</a>
+                        <a class="text-muted" href="{{config('faq.imprint')}}">Impressum</a>
                 </div>
             </div>
         </div>
