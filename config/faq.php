@@ -7,5 +7,7 @@ return [
     'paceholder_name' => env('PLACEHOLDER_NAME', 'Felix Maier'),
     'placeholder_question' => env('PLACEHOLDER_QUESTION', 'Ich möchte gerne wissen...'),
     'imprint' => env('IMPRINT_LINK', 'https://www.google.de'),
-    'anonymous' => env('ANONYMOUS_QUESTION', true)
+    'anonymous' => env('ANONYMOUS_QUESTION', true),
+    'chat_id' => env('CHAT_ID'),
+    'api_key' => env('API_KEY')
 ];

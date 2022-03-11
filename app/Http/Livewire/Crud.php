@@ -16,7 +16,7 @@ class Crud extends Component
     public $orderBy = 'id';
     public $orderAsc = false;
     public $count = 0;
-    public $youActive = false;
+    public $youActive = true;
 
     public function render()
     {
