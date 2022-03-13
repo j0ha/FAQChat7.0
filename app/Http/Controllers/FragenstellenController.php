@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Frage;
 use Illuminate\Http\Request;
+use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 
 class FragenstellenController extends Controller
 {
@@ -11,6 +12,7 @@ class FragenstellenController extends Controller
         return view('fragestellen');
     }
     public function fragestellen(Request $request) {
+        Bugsnag::leaveBreadcrumb($request);
         if(config('faq.anonymous') == true) {
             $request->validate([
                 'autor' => 'min:1 | max:255',
